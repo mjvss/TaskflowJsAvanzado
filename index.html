@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Layout App</title>
+    <!-- Use a system font or similar to the image (SF Pro, Inter, etc) -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="browser-window">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+        <!-- Fake Mac Buttons -->
+        <div class="mac-buttons">
+            <div class="mac-btn close"></div>
+            <div class="mac-btn minimize"></div>
+            <div class="mac-btn maximize"></div>
+        </div>
+
+        <div class="sidebar-header">
+            <div class="org-switcher">
+                <div class="org-icon"></div>
+                <div class="org-actions">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+                </div>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <ul>
+                <li class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                    Welcome
+                </li>
+                <li class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                    Dashboard
+                </li>
+                <li class="nav-item active">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                    Tasks
+                </li>
+                <li class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    People
+                </li>
+                <li class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    Reports
+                </li>
+                <li class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    Billing
+                </li>
+                <li class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Integrations
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-container">
+        <!-- Top Browser Bar Mockup -->
+        <header class="browser-bar">
+            <div class="url-input">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lock-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                appname.com
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="content">
+            <h1 class="page-title">To-Do</h1>
+            
+            <div class="action-bar">
+                <button class="btn btn-primary" id="btn-new-task">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    New Task
+                </button>
+                <button class="btn btn-secondary" id="btn-filters">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                    Filters
+                </button>
+                <div class="filter-menu" id="filter-menu">
+                    <button class="filter-option active" data-filter="all">All</button>
+                    <button class="filter-option" data-filter="pending">Pending</button>
+                    <button class="filter-option" data-filter="completed">Completed</button>
+                </div>
+            </div>
+
+            <!-- Inline add form -->
+            <div class="inline-form" id="todo-form">
+                <input type="text" id="task-input" placeholder="Type task name..." maxlength="50">
+                <button class="btn btn-primary" id="submit-task">Save</button>
+            </div>
+
+            <div class="task-list-wrapper">
+                <ul class="task-list" id="task-list">
+                    <!-- Las tareas se generarán aquí con JS -->
+                </ul>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
