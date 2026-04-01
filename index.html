@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do Layout App</title>
-    <!-- Use a system font or similar to the image (SF Pro, Inter, etc) -->
+    <title>TaskFlow — To-Do</title>
+    <meta name="description" content="TaskFlow: A clean, interactive task management app for organizing your daily work.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%234f46e5'/><path d='M28 52l16 16 28-32' fill='none' stroke='white' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -69,13 +70,20 @@
         <header class="browser-bar">
             <div class="url-input">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lock-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                appname.com
+                taskflow.app
             </div>
         </header>
 
         <!-- Page Content -->
         <main class="content">
-            <h1 class="page-title">To-Do</h1>
+            <!-- Page Header with counter and progress -->
+            <div class="page-header">
+                <h1 class="page-title">To-Do</h1>
+                <div class="task-counter" id="task-counter" role="status" aria-live="polite"></div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progress-bar" style="width: 0%"></div>
+                </div>
+            </div>
             
             <div class="action-bar">
                 <button class="btn btn-primary" id="btn-new-task">
@@ -94,15 +102,24 @@
             </div>
 
             <!-- Inline add form -->
-            <div class="inline-form" id="todo-form">
-                <input type="text" id="task-input" placeholder="Type task name..." maxlength="50">
-                <button class="btn btn-primary" id="submit-task">Save</button>
+            <form class="inline-form" id="todo-form">
+                <input type="text" id="task-input" placeholder="Type task name…" maxlength="50" autocomplete="off" aria-label="Task description">
+                <button type="submit" class="btn btn-primary" id="submit-task">Save</button>
+            </form>
+
+            <!-- Task list -->
+            <div class="task-list-wrapper">
+                <ul class="task-list" id="task-list"></ul>
             </div>
 
-            <div class="task-list-wrapper">
-                <ul class="task-list" id="task-list">
-                    <!-- Las tareas se generarán aquí con JS -->
-                </ul>
+            <!-- Empty state -->
+            <div class="empty-state" id="empty-state">
+                <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M9 11l3 3L22 4"></path>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+                <h3 id="empty-title">No tasks yet</h3>
+                <p id="empty-text">Click "New Task" to create your first one</p>
             </div>
         </main>
     </div>
